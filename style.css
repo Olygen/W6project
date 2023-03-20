@@ -1,0 +1,80 @@
+#container {
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 4px;
+    width: 60%;
+    height: 80vh;
+    background-image: url('henhouse.png');
+    background-size: cover; 
+    background-position: center; 
+    /* align-items: center;  */
+    /* background-size: contain; */
+    margin: 0 auto;
+    position: relative;
+  }
+
+  #basket {
+    position: absolute;
+    object-position: bottom;
+    /* height: auto;
+    max-width: 100%; */
+    /* left: 50%; */
+    bottom: 0;
+    /* transform: translate(-50%, -50%); */
+    /* display: inline-block; */
+  }
+  
+  .shelves {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #left-up-shelf,
+  #left-shelf {
+    width: 40px;
+    height: 120px;
+    transform: rotate(-15deg);
+    background-color: #cfa37b;
+    margin-right: 20px;
+  }
+  
+  #right-up-shelf,
+  #right-shelf {
+    width: 40px;
+    height: 120px;
+    transform: rotate(15deg);
+    background-color: #cfa37b;
+    margin-right: 20px;
+  }
+  
+  #score-board {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+  }
+
+  h1 {
+    text-align: center;
+    font-family: monospace;
+    font-size: 70px;
+  }
+
+  .buttons {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 20px;
+    background-color: brown;
+    color: aliceblue;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  }
