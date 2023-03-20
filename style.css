@@ -3,9 +3,10 @@
     justify-content: center;
     border: 2px solid black;
     border-radius: 4px;
-    width: 60%;
+    width: 80%;
     height: 80vh;
-    background-image: url('henhouse.png');
+    background-image: url('henhouse1.png');
+    /* opacity: 0.5; */
     background-size: cover; 
     background-position: center; 
     /* align-items: center;  */
@@ -16,65 +17,136 @@
 
   #basket {
     position: absolute;
-    object-position: bottom;
-    /* height: auto;
-    max-width: 100%; */
-    /* left: 50%; */
+    text-align: center;
     bottom: 0;
-    /* transform: translate(-50%, -50%); */
-    /* display: inline-block; */
-  }
+   }
   
-  .shelves {
-    display: flex;
+  #left-up-shelf {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  #left-up-shelf,
-  #left-shelf {
-    width: 40px;
-    height: 120px;
-    transform: rotate(-15deg);
-    background-color: #cfa37b;
-    margin-right: 20px;
-  }
-  
-  #right-up-shelf,
-  #right-shelf {
-    width: 40px;
-    height: 120px;
+    text-align: left;
+    width: 28%;
+    height: 5%;
     transform: rotate(15deg);
-    background-color: #cfa37b;
-    margin-right: 20px;
+    background-color: #f77c09;
+    left: 0;
+    bottom: 60%;
+  }
+
+  #left-shelf {
+    position: absolute;
+    text-align: left;
+    width: 28%;
+    height: 5%;
+    transform: rotate(15deg);
+    background-color: #f77c09;
+    left: 0;
+    bottom: 30%;
+  }
+  
+  #right-up-shelf {
+    position: absolute;
+    text-align: left;
+    width: 28%;
+    height: 5%;
+    transform: rotate(-15deg);
+    background-color: #f77c09;
+    right: 0;
+    bottom: 60%;
+  }
+
+  #right-shelf {
+    position: absolute;
+    text-align: left;
+    width: 28%;
+    height: 5%;
+    transform: rotate(-15deg);
+    background-color: #f77c09;
+    right: 0;
+    bottom: 30%;
   }
   
   #score-board {
     position: absolute;
+    text-align: center;
+    color: white;
+    /* list-style-type: none; */
+    /* width: 20%;
+    height: 10%; */
+    background-color: black;
+    padding-right: 5%;
     top: 10px;
-    right: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 24px;
     font-weight: bold;
-    color: #fff;
-    text-shadow: 2px 2px #000;
+    text-shadow: 2px 2px gray;
   }
 
   h1 {
     text-align: center;
-    font-family: monospace;
-    font-size: 70px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
   }
 
-  .buttons {
-    display: block;
-    margin: 0 auto;
-    padding: 10px;
-    font-family: monospace;
-    font-size: 20px;
-    background-color: brown;
-    color: aliceblue;
-    border-radius: 50%;
+
+  /* .manage {
+    position: absolute;
     width: 100px;
     height: 100px;
+    background-color: #f77c09;
+    border-radius: 50%;
+    border-color: bisque;
   }
+   */
+
+  #left-up-button {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #f77c09;
+    border-radius: 50%;
+    border-color: bisque;
+    left: 0;
+    bottom: 60%;
+    text-align: left;
+    margin-left: 1%;
+  }
+
+  #left-button {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #f77c09;
+    border-radius: 50%;
+    border-color: bisque;
+    left: 0;
+    bottom: 30%;
+    border-radius: 50%;
+    margin-left: 1%;
+  }
+  
+  #right-up-button {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #f77c09;
+    border-radius: 50%;
+    border-color: bisque;
+    right: 0;
+    bottom: 60%;
+    border-radius: 50%;
+    margin-right: 1%;
+  }
+
+  #right-button {
+    position: absolute;
+   width: 100px;
+    height: 100px;
+    background-color: #f77c09;
+    border-radius: 50%;
+    border-color: bisque;
+    right: 0;
+    bottom: 30%;
+    border-radius: 50%;
+    margin-right: 1%;
+  }
+  
