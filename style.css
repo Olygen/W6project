@@ -19,52 +19,43 @@
     position: absolute;
     text-align: center;
     bottom: 0;
+    width: 28%;
+    /* height: 30%; */
    }
+
+   .shelf {
+    position: absolute;
+    width: 28%;
+    height: 20%;
+    background-image: url('board.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
   
   #left-up-shelf {
-    position: absolute;
-    text-align: left;
-    width: 28%;
-    height: 5%;
-    transform: rotate(15deg);
-    background-color: #f77c09;
+    transform: rotate(35deg);
     left: 0;
     bottom: 60%;
   }
-
+  
   #left-shelf {
-    position: absolute;
-    text-align: left;
-    width: 28%;
-    height: 5%;
-    transform: rotate(15deg);
-    background-color: #f77c09;
+    transform: rotate(35deg);
     left: 0;
-    bottom: 30%;
+    bottom: 25%;
   }
   
   #right-up-shelf {
-    position: absolute;
-    text-align: left;
-    width: 28%;
-    height: 5%;
-    transform: rotate(-15deg);
-    background-color: #f77c09;
+    transform: rotate(5deg);
     right: 0;
     bottom: 60%;
   }
-
-  #right-shelf {
-    position: absolute;
-    text-align: left;
-    width: 28%;
-    height: 5%;
-    transform: rotate(-15deg);
-    background-color: #f77c09;
-    right: 0;
-    bottom: 30%;
-  }
   
+  #right-shelf {
+    transform: rotate(5deg);
+    right: 0;
+    bottom: 25%;
+  }
+
   #score-board {
     position: absolute;
     text-align: center;
@@ -87,66 +78,43 @@
     font-size: 50px;
   }
 
-
-  /* .manage {
-    position: absolute;
+  .circle-button {
     width: 100px;
     height: 100px;
-    background-color: #f77c09;
+    background-image: url('board.png');
+    /* background-size: cover; */
+    background-size: 1000%;
+    background-position: 300px -80px; 
+    /* background-color: #f77c09; */
     border-radius: 50%;
     border-color: bisque;
   }
-   */
-
-  #left-up-button {
+  
+  .circle-button.left-up {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: #f77c09;
-    border-radius: 50%;
-    border-color: bisque;
     left: 0;
     bottom: 60%;
     text-align: left;
     margin-left: 1%;
   }
-
-  #left-button {
+  
+  .circle-button.left {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: #f77c09;
-    border-radius: 50%;
-    border-color: bisque;
     left: 0;
     bottom: 30%;
-    border-radius: 50%;
     margin-left: 1%;
   }
   
-  #right-up-button {
+  .circle-button.right-up {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: #f77c09;
-    border-radius: 50%;
-    border-color: bisque;
     right: 0;
     bottom: 60%;
-    border-radius: 50%;
-    margin-right: 1%;
-  }
-
-  #right-button {
-    position: absolute;
-   width: 100px;
-    height: 100px;
-    background-color: #f77c09;
-    border-radius: 50%;
-    border-color: bisque;
-    right: 0;
-    bottom: 30%;
-    border-radius: 50%;
     margin-right: 1%;
   }
   
+  .circle-button.right {
+    position: absolute;
+    right: 0;
+    bottom: 30%;
+    margin-right: 1%;
+  }
