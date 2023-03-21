@@ -52,7 +52,7 @@ class Egg {
   // initially let condition be < 20
   // Eggs are to appear on the top of the chosen by method chooseShelf() shelves 
 
-    generateEgg(i) { 
+    generateEgg() { 
         if (i >= 20) return;
 
         // create an egg element and append the egg element to the container
@@ -89,14 +89,16 @@ class Egg {
         egg.style.right = PositionRight + '%';
         egg.style.bottom = PositionBottom + '%';
 
-        i++;
-
         setTimeout(() => {
-            this.generateEgg();
+            i++;
+            if (i < 20) { 
+                this.generateEgg();
+              } 
         }, 5000);
     };
 };
  // eggs generation:
+let i = 0; // add loop counter variable declaration
 const egg = new Egg();
 egg.generateEgg(0);
 
