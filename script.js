@@ -2,10 +2,10 @@ const container = document.querySelector('#container');
 const basket = document.querySelector('#basket');
 const eggs = document.querySelectorAll('.egg');
 const scoreBoard = document.querySelector('#score-board');
-const leftUpButton = document.querySelector('#left-up-button');
-const leftButton = document.querySelector('#left-button');
-const rightUpButton = document.querySelector('#right-up-button');
-const rightButton = document.querySelector('#right-button');
+const leftUpButton = document.querySelector('#circle-button left-up');
+const leftButton = document.querySelector('#circle-button left');
+const rightUpButton = document.querySelector('#circle-button right-up');
+const rightButton = document.querySelector('#circle-button right');
 
 let player1Score = 0;
 let player2Score = 0;
