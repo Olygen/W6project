@@ -6,10 +6,6 @@ const leftUpButton = document.querySelector('.circle-button.left-up');
 const leftButton = document.querySelector('.circle-button.left');
 const rightUpButton = document.querySelector('.circle-button.right-up');
 const rightButton = document.querySelector('.circle-button.right');
-const leftUpShelf = document.querySelector('#left-up-shelf');
-const leftShelf = document.querySelector('#left-shelf');
-const rightUpShelf = document.querySelector('#right-up-shelf');
-const rightShelf = document.querySelector('#right-shelf');
 
 let player1Caught = 0;
 let player2Caught = 0;
@@ -34,6 +30,9 @@ class Player {
 class Egg {
     constructor() {
       this.shelf = null;
+    //   this.positionLeft = null;
+    //   this.positionRight = null;
+    //   this.positionBottom = null;
     }
 
     // method to choose shelf randomly with values from 0 to 4 
@@ -65,8 +64,9 @@ class Egg {
   // Eggs are to appear on the top of the chosen by method chooseShelf() shelves 
 
     generateEgg() { 
+        if (i >= 20) return; //temporare!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      // create an egg element and append the egg element to the container
+        // create an egg element and append the egg element to the container
         let egg = document.createElement('div');
         egg.className = 'egg';
         container.appendChild(egg);
@@ -100,41 +100,59 @@ class Egg {
         egg.style.right = PositionRight + '%';
         egg.style.bottom = PositionBottom + '%';
 
+        const eggRollInterval = setInterval(() => {
+        // 1 represents the distance the egg should move on each roll
+          this.rollEgg(1); 
+        
+        // repeatedly call the this.rollEgg(1) method every 100 milliseconds, 
+        //causing the egg to roll along the shelf.
+        // checks if the egg element is still connected to the document
+          if (!egg.isConnected) { 
+            clearInterval(eggRollInterval);
+          }
+        }, 1000);
 
+        setTimeout(() => {
+            i++; //temporare!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            if (i < 20) { //temporare!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                this.generateEgg();
+              } 
+        }, 5000);
       };
         //method to roll eggs with the property of the edge that will be changing from 0 to 9. 
-        // Here, we're using this.shelf to determine which shelf the egg is on, 
-        // and then incrementing edge from 0 to 9 to simulate the egg rolling. 
-        // Within each iteration of the loop, we need to update the positionLeft, 
-        //positionRight and positionBottom properties to change the egg's position, 
-        //and then call some method to update the egg's style on the page. 
-        rollEgg() {
-          let edge = 0;
-          while (edge < 9) {
-          if (this.shelf === "left-up-shelf" || this.shelf === "left-up-shelf") {
-            if (this.shelf === "left-up-shelf") {
+        rollEgg(position) {
+          const eggElements = document.getElementsByClassName('egg');
 
-            } else {
+          for (let i = 0; i < eggElements.length; i++) {
+            const eggElement = eggElements[i];
+            const currentPosition = parseFloat(eggElement.style.left); //left!!!!!!!!!!!!!!!!!!!!!!!!
 
+            if (currentPosition >= 0 && currentPosition <= 9) {
+              const newPosition = currentPosition + position;
+
+              if (newPosition > 9) {
+                // Remove egg element temporarely once it falls off the shelf!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                let iterations = eggElement.getAttribute('data-iterations');
+                // if (!iterations) {
+                //   iterations = 0;
+                // }
+                // iterations++;
+                // eggElement.setAttribute('data-iterations', iterations);
+                // if (iterations >= 9) {
+                  eggElement.remove();
+                  continue;
+              }
             }
-
-          }
-          else if (this.shelf === "right-up-shelf" || this.shelf === "right-shelf") {
-            if (this.shelf === "right-up-shelf") {
-              
-            } else {
-
-            }
-          }
-          edge ++;
+            eggElement.style.left = newPosition + '%';
           }
         }
 };
-// number of eggs set to 20:
-const maxEggs = 20;
-let i = 0;
+ // eggs generation:
+let i = 0; // add loop counter variable declaration
 const egg = new Egg();
+egg.generateEgg(0);
 
+<<<<<<< HEAD
 function generateEggWithDelay() {
   egg.generateEgg();
   i++;
@@ -157,6 +175,8 @@ const startGame = window.alert(`${player1Name} starts the game`);
 window.alert(`You hit the alien ship! Its hull is now ${target.hull}.`);
 
 generateEggWithDelay();
+=======
+>>>>>>> parent of fe959a5 (place and steps for rollEggs method are defined)
 
 // updateScore(player, caught, missed) {
 //   // TODO: update player's score and caught/missed eggs
