@@ -1,17 +1,18 @@
-✅ ✅ EASTER IS COMING
+✅✅  EASTER IS COMING
 ✅ Requirements:
 •	Must be a two player game (either against the computer or against another player)
 •	A win state - a way for the player to win the game
 •	A lose state - a way for the player to lose the game
 •	A way to keep playing if the game is not over
 •	Multiple rounds to play - a round must begin, end, and there must be a way to check if the game should continue or the overall game is won or lost
+✅ Not mandatory requirements
 •	A way to reset the board and play again
 •	CSS to give your game a personal and fun style
 •	Responsive mobile design
-✅ MAIN IDEA
+✅✅  MAIN IDEA
 Players try to catch in the basket as many eggs as possible. Eggs are produced by 4 hens sitting on 4 shelves (appears on the top of shelves). Shelves are inclined, eggs roll down along the shelves. As soon player misses egg, another player starts/continues. Game continues until one of the players reaches certain score.
 We need to make eggs appear randomly from 4 different places and move smoothly until the end of the shelf hitting the basket which is managed by buttons or falling down.
-✅ ✅ SKETCH 
+✅✅  SKETCH 
 ✅ Prepare images of hens, shelves, basket for eggs and henhouse background
 ✅  HTML: 
 •	Add container for henhouse. 
@@ -37,11 +38,10 @@ We need to make eggs appear randomly from 4 different places and move smoothly u
 •	changePlayer() to switch players when egg falls and call updateScore
 •	winState() and loseState() - methods that will check with win and lose conditions depending on caught and lost properties of players, creates window with the name of the player and “win” or ”lose” and asks to continue
 ✅ Make an Egg class with properties of shelf and egg position. Create methods and functions to manage eggs:
+•	chooseShelf() – method to choose shelf randomly with values from 0 to 4 using Math.random() method this.shelf = Math.floor(Math.random() * 4) + 1; – 
 •	generateEgg() – method with the loop to create instances of the class with condition to recall eggs emersion check with win and lose conditions. Eggs are to appear on the top of the shelves and use method chooseShelf()
-•	chooseShelf() – method to choose shelf with function to generate eggs randomly values from 0 to 4 using Math.random() method this.shelf = Math.floor(Math.random() * 4) + 1; – 
-•	eggRolls() – method to move eggs them from the top of the shelves to the bottom and change values of created variables of caught and missed eggs. There should be property of the edge that will be changing according to their position on the shelf: the closer to the edge the higher value from 0 to 9. If value achieves 9 AND basket is close – variables of caught by player eggs: +1, egg disappears. Else variables of missed by player eggs +1, egg falls down (eggFalls() is recalled), other players continue to play.
-•	eggFalls() – method to make egg fall from the shelf. Value changes to TRUE and used in changePlayer() method of the Game object
-•	Add event listeners to the eggs to check its position
+•	rollEgg() – method to roll eggs with the property of the edge that will be changing from 0 to 9. If value achieves 9 AND basket is close – variables of caught by player eggs: +1, updateScore() is recalled, egg disappears. Else egg falls down (fallEggs() is recalled). 
+•	fallEgg() – method to make egg fall from the shelf. variables of missed by player eggs +1, updateScore() is recalled, changePlayer() method is recalled 
 ✅ Make a Basket object
 •	Add event listener for buttons to move Basket towards the left, up-left, right and up-right shelves or event listener for mouse to drug and drop basket towards shelves.
 •	basketPosition() – method that compares the egg with basket positions. If  basket position is close enough to the egg – it is caught, pass value to the variable of caught by player eggs, else – missed, pass value to the variable of missed by player eggs

@@ -11,16 +11,25 @@ const leftShelf = document.querySelector('#left-shelf');
 const rightUpShelf = document.querySelector('#right-up-shelf');
 const rightShelf = document.querySelector('#right-shelf');
 
-// initial eggs positions to change in generateEgg method
-
 let player1Caught = 0;
 let player2Caught = 0;
 let player1Missed = 0;
 let player2Missed = 0;
-// let round = 1;
-// let gameStatus = 'running';
+let round = 1;
+let gameStatus = 'running';
 
-// Make an Egg class. Create methods to manage eggs:
+
+// Create Players class. Create methods to manage score and switch players:
+
+class Player {
+  constructor(name, caught, missed) {
+    this.name = name;
+    this.caught = caught;
+    this.missed = missed;
+  }
+}
+
+// Create an Egg class. Create methods to manage eggs:
 
 class Egg {
     constructor() {
@@ -133,6 +142,19 @@ function generateEggWithDelay() {
     setTimeout(generateEggWithDelay, 5000);
   }
 }
+
+window.alert("This is a henhouse. Catch the Eggs for coming Easter \n by pressing buttons or shifting basket");
+
+
+const player1Name = prompt("Enter name for player 1:");
+const player2Name = prompt("Enter name for player 2:");
+
+const player1 = new Player(player1Name, 0, 0);
+const player2 = new Player(player2Name, 0, 0);
+
+const startGame = window.alert(`${player1Name} starts the game`);
+
+window.alert(`You hit the alien ship! Its hull is now ${target.hull}.`);
 
 generateEggWithDelay();
 
