@@ -6,8 +6,8 @@ let player1Caught = 0;
 let player2Caught = 0;
 let player1Missed = 0;
 let player2Missed = 0;
-let round = 1;
-let gameStatus = 'running';
+// let round = 1;
+// let gameStatus = 'running';
 
 // Create Game class to manage rounds and switch players
 
@@ -15,18 +15,20 @@ class Game {
   constructor(player1Name, player2Name) {
     this.player1Name = player1Name;
     this.player2Name = player2Name;
-    this.round = 1; // initialize round to 1
+    this.round = 1; 
+
   }
   switchPlayer() {
-    const { player1Name, player2Name, round } = this;
-    if (round % 2 === 1) {
-      window.alert(`${player2Name} continues the game`);
+
+    if (this.round % 2 === 1) {
+      window.alert(`${player1Name}'s turn to catch eggs`);
     } else {
-      window.alert(`${player1Name} continues the game`);
+      window.alert(`${player2Name}'s turn to catch eggs`);
     }
-    this.round++; // increment round by 1
+    this.round++; 
     generateEggWithDelay();
-  }
+
+   }
 }
 
 // Create Players class. Create methods to manage score and switch players:
@@ -68,6 +70,10 @@ function generateEggWithDelay() {
       const egg = new Egg();
       egg.generateEgg();
       eggFall(egg);
+      // if (i === maxEggs - 1) {
+      //   // Call the callback function when all the eggs have fallen
+      //   callback();
+      // }
     }, i * 1000);
   }
 }
@@ -107,24 +113,25 @@ const player2Name = prompt("Enter name for player 2:");
 const player1 = new Player(player1Name, 0, 0);
 const player2 = new Player(player2Name, 0, 0);
 
-const startGame = window.alert(`${player1Name} starts the game`);
+const game = new Game(player1Name, player2Name);
 
-generateEggWithDelay();
-
-// const game = new Game(player1Name, player2Name);
-// game.switchPlayer();
+//event listener that listens for keydown events on the document object. 
+//When a keydown event is triggered, the function defined in the second 
+//argument of the addEventListener method is executed. 
 
 document.addEventListener("keydown", function(event) {
   const arrowKeys = ["ArrowLeft", "ArrowRight"];
+  // checks if the pressed key is an arrow key
   if (arrowKeys.includes(event.key)) {
+    // finding out sizes of basket and container
     const containerRect = container.getBoundingClientRect();
-    const basketRect = basket.getBoundingClientRect();
+    const basketRect = basket.getBoundingClientRect(); // method returns an object with properties representing the size and position of the element
     const basketLeft = basketRect.left - containerRect.left;
     const basketWidth = basketRect.width;
     const containerWidth = containerRect.width;
-    const movementDistance = 20;
+    const movementDistance = 20; //distance the basket will move with each keypress
 
-    if (event.key === "ArrowLeft" && basketLeft > 0) {
+        if (event.key === "ArrowLeft" && basketLeft > 0) {
       basket.style.left = `${basketLeft - movementDistance}px`;
     } else if (event.key === "ArrowRight" && basketLeft + basketWidth < containerWidth) {
       basket.style.left = `${basketLeft + movementDistance}px`;
@@ -141,21 +148,35 @@ document.addEventListener("keydown", function(event) {
 
       if (eggTop + eggHeight > basketTop && eggLeft >= basketLeft && eggLeft + eggWidth <= basketLeft + basketWidth) {
         egg.remove();
-        if (round % 2 === 1) {
-          player1.caught++;
-        } else {
+        if (game.round % 2 === 1) {
           player2.caught++;
+        } else {
+          player1.caught++;
         }
         scoreBoard.innerText = `${player1.name}: ${player1.caught} caught, ${player1.missed} missed\n${player2.name}: ${player2.caught} caught, ${player2.missed} missed`;
       } else if (eggTop + eggHeight >= containerRect.height) {
         egg.remove();
-        if (round % 2 === 1) {
-          player1.missed++;
-        } else {
+        if (game.round % 2 === 1) {
           player2.missed++;
+        } else {
+          player1.missed++;
         }
         scoreBoard.innerText = `${player1.name}: ${player1.caught} caught, ${player1.missed} missed\n${player2.name}: ${player2.caught} caught, ${player2.missed} missed`;
       }
     });
+
   }
-});
+}); 
+
+
+// function playGame() {
+//   game.switchPlayer();
+//   generateEggWithDelay(() => {
+//     // Switch to the second player after all the eggs have fallen
+//     game.switchPlayer();
+//   });
+// }
+
+// playGame();
+
+game.switchPlayer();
